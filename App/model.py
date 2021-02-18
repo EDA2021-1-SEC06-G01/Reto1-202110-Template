@@ -36,12 +36,32 @@ los mismos.
 """
 
 # Construccion de modelos
+def newCatalog():
+    catalog = {'category_id': None
+               'videos-large': None
+               'videos-small':None}
+    
+    catalog['category-id'] = lt.newList()
+    catalog['videos-large'] = lt.newList('SINGLE_LLINKED',
+                                    cmpfunction=comparevideos)
+    catalog['videos-small'] = lt.newList('SINGLE_LINKED', cmpfunction=comparevideos)
+
+    return catalog
 
 # Funciones para agregar informacion al catalogo
 
 # Funciones para creacion de datos
 
 # Funciones de consulta
+def getBuenosVideos(catalog, categoria, pais, n):
+    videos = catalog['videos-small']
+    buenosVideos = lt.newList()
+    for cont in range(1, n+1):
+        video = lt.getElement(videos, cont)
+        if video['category_id'] == categoria and video['country']==pais and video['n']==n:
+            lt.addLast(buenosVideos, video)
+    return buenosVideos
+
 
 # Funciones utilizadas para comparar elementos dentro de una lista
 

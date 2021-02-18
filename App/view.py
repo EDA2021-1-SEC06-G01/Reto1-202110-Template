@@ -37,7 +37,22 @@ operación solicitada
 def printMenu():
     print("Bienvenido")
     print("1- Cargar información en el catálogo")
-    print("2- ")
+    print("2- Encontrar buenos videos por categoría y país")
+    print("3- Encontrar video tendencia por país")
+    print("4- Encontrar video tendencia por categoría")
+    print("5- Buscar los videos con más likes")
+
+def initCatalog():
+    return controller.initCatalog()
+
+def printBuenosVideos(videos):
+    size = lt.size(videos)
+    if size:
+        print(' Estos son los mejores videos: ')
+        for video in lt.iterator(videos):
+            print('Título: '+ video['title']+ ' Trending Date: '+video['trending_date']+' Nombre del canal: '+ video['cannel_title']+ ' Fecha de publicación: '+video['publish_time']+' Reproducciones: '+video['views']+ ' Likes: '+video['likes']+ " Dislikes: "+video['dislikes'])
+    else:
+        print('No se encontraron videos')
 
 catalog = None
 
@@ -51,7 +66,12 @@ while True:
         print("Cargando información de los archivos ....")
 
     elif int(inputs[0]) == 2:
-        pass
+        categoria = input("Indique el nombre de la categoría: ")
+        pais = input("Indique el país: ")
+        n = input("Indique el número de videos para listar: ")
+        print("Cargando los "+ {n} + " videos más buenos...")
+        videos = controller.getBuenosVideos(catalog, categoria, pais, n)
+        printBuenosVideos(videos)
 
     else:
         sys.exit(0)
