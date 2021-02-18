@@ -36,21 +36,43 @@ los mismos.
 """
 
 # Construccion de modelos
-def newCatalog():
-    catalog = {'category_id': None,
-               'videos-large': None,
-               'videos-small':None}
+def newCatalog(id):
+    catalog = {'videos': None,
+               'categoria': None,
+               'pais':None,
+               'likes':None}
     
-    catalog['category-id'] = lt.newList()
-    catalog['videos-large'] = lt.newList('SINGLE_LLINKED',
-                                    cmpfunction=comparevideos)
-    catalog['videos-small'] = lt.newList('SINGLE_LINKED', cmpfunction=comparevideos)
+    catalog['videos'] = lt.newList()
+    catalog['categoria'] = lt.newList('SINGLE_LLINKED')
+    catalog['pais'] = lt.newList('ARRAY_LIST')
+    catalog['likes'] = lt.newList('SINGLE_LINKED')
 
     return catalog
 
 # Funciones para agregar informacion al catalogo
+def addCategory(catalog, c):
+    lt.addLast(catalog['category_id'],c)
+    category = c['category_id'].split(",")
+    for cat in categoria:
+        newCategory(c['category_id'])
+
+def addVideo(catalog, video):
+    lt.addLast(catalog['videos'],video)
+    info = video['pais'].split(",")
+    for p in pais:
+        newVideo(video['title'])
 
 # Funciones para creacion de datos
+def newCategory(id):
+    catalog = {'id':''}
+    catalog['id'] = id
+    return catalog
+
+def newVideo(title, id):
+    video = {'title':'','video_id':''}
+    video['title'] = title
+    video['video_id'] = id
+    return video
 
 # Funciones de consulta
 def getBuenosVideos(catalog, categoria, pais, n):
@@ -58,17 +80,12 @@ def getBuenosVideos(catalog, categoria, pais, n):
     buenosVideos = lt.newList()
     for cont in range(1, n+1):
         video = lt.getElement(videos, cont)
-        if video['category_id'] == categoria and video['country']==pais and video['n']==n:
+        print(video['title'])
+        if video['category_id'] == categoria and video['country']==pais:
             lt.addLast(buenosVideos, video)
     return buenosVideos
 
 
 # Funciones utilizadas para comparar elementos dentro de una lista
-
-def comparevideos(video1, video):
-    if (video1.lower() in video['title'].lower()):
-        return 0
-    return -1
-
 
 # Funciones de ordenamiento

@@ -45,6 +45,9 @@ def printMenu():
 def initCatalog():
     return controller.initCatalog()
 
+def loadData(catalog):
+    controller.loadData(catalog)
+
 def printBuenosVideos(videos):
     size = lt.size(videos)
     if size:
@@ -64,7 +67,10 @@ while True:
     inputs = input('Seleccione una opción para continuar\n')
     if int(inputs[0]) == 1:
         print("Cargando información de los archivos ....")
-
+        catalog = initCatalog()
+        loadData(catalog)
+        print('Categorías cargados: '+str(lt.size(catalog['category_id'])))
+        print('Videos cargados: '+ str(lt.size(catalog['videos-small'])))
     elif int(inputs[0]) == 2:
         categoria = input("Indique el nombre de la categoría: ")
         pais = input("Indique el país: ")
