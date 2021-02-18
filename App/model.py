@@ -37,8 +37,8 @@ los mismos.
 
 # Construccion de modelos
 def newCatalog():
-    catalog = {'category_id': None
-               'videos-large': None
+    catalog = {'category_id': None,
+               'videos-large': None,
                'videos-small':None}
     
     catalog['category-id'] = lt.newList()
@@ -64,5 +64,11 @@ def getBuenosVideos(catalog, categoria, pais, n):
 
 
 # Funciones utilizadas para comparar elementos dentro de una lista
+
+def comparevideos(video1, video):
+    if (video1.lower() in video['title'].lower()):
+        return 0
+    return -1
+
 
 # Funciones de ordenamiento

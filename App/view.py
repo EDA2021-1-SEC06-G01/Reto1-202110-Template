@@ -68,8 +68,9 @@ while True:
     elif int(inputs[0]) == 2:
         categoria = input("Indique el nombre de la categoría: ")
         pais = input("Indique el país: ")
-        n = input("Indique el número de videos para listar: ")
-        print("Cargando los "+ {n} + " videos más buenos...")
+        n = int(input("Indique el número de videos para listar: "))
+        catalog = initCatalog()
+        print("Cargando los videos más buenos...")
         videos = controller.getBuenosVideos(catalog, categoria, pais, n)
         printBuenosVideos(videos)
 
