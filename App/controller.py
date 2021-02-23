@@ -55,4 +55,4 @@ def loadVideos(catalog):
 
 # Funciones de consulta sobre el catálogo
 def mejoresVideosPorViews(catalog, estructuraDeDatos, numeroDeElementos, algoritmo):
-    pass
+    model.mejoresVideosPorViews(catalog, estructuraDeDatos, numeroDeElementos, algoritmo)

@@ -74,9 +74,9 @@ while True:
     elif int(inputs[0]) == 2:
         estructuraDeDatos = input("¿Cuál estructura de datos desea utilizar? (ARRAY_LIST/LINKED_LIST)")
         numeroDeElementos = int(input("¿Cuál es el número de datos que desea utilizar?"))
-        algoritmo = input("¿Cuál algoritmo desea utilizar? (shell/insertion/selection...)")
+        algoritmo = input("¿Cuál algoritmo desea utilizar? (shellsort/insertionsort/selectionsort) Escribir igual a las opciones.")
         controller.mejoresVideosPorViews(catalog, estructuraDeDatos, numeroDeElementos, algoritmo)
-        
+
     else:
         sys.exit(0)
 sys.exit(0)
