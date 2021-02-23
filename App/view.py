@@ -69,17 +69,14 @@ while True:
         print("Cargando información de los archivos ....")
         catalog = initCatalog()
         loadData(catalog)
-        print('Categorías cargados: '+str(lt.size(catalog['category_id'])))
-        print('Videos cargados: '+ str(lt.size(catalog['videos-small'])))
+        print('Categorías cargados: '+str(lt.size(catalog['categories'])))
+        print('Videos cargados: '+ str(lt.size(catalog['videos'])))
     elif int(inputs[0]) == 2:
-        categoria = input("Indique el nombre de la categoría: ")
-        pais = input("Indique el país: ")
-        n = int(input("Indique el número de videos para listar: "))
-        catalog = initCatalog()
-        print("Cargando los videos más buenos...")
-        videos = controller.getBuenosVideos(catalog, categoria, pais, n)
-        printBuenosVideos(videos)
-
+        estructuraDeDatos = input("¿Cuál estructura de datos desea utilizar? (ARRAY_LIST/LINKED_LIST)")
+        numeroDeElementos = int(input("¿Cuál es el número de datos que desea utilizar?"))
+        algoritmo = input("¿Cuál algoritmo desea utilizar? (shell/insertion/selection...)")
+        controller.mejoresVideosPorViews(catalog, estructuraDeDatos, numeroDeElementos, algoritmo)
+        
     else:
         sys.exit(0)
 sys.exit(0)

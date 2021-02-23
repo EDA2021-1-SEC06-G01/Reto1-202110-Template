@@ -38,29 +38,23 @@ los mismos.
 # Construccion de modelos
 def newCatalog(id):
     catalog = {'videos': None,
-               'categoria': None,
-               'pais':None,
+               'categories': None,
+               'country':None,
                'likes':None}
     
-    catalog['videos'] = lt.newList()
-    catalog['categoria'] = lt.newList('SINGLE_LLINKED')
-    catalog['pais'] = lt.newList('ARRAY_LIST')
+    catalog['videos'] = lt.newList('SINGLE_LINKED')
+    catalog['categories'] = lt.newList('SINGLE_LLINKED')
+    catalog['country'] = lt.newList('SINGLE_LINKED')
     catalog['likes'] = lt.newList('SINGLE_LINKED')
 
     return catalog
 
 # Funciones para agregar informacion al catalogo
-def addCategory(catalog, c):
-    lt.addLast(catalog['category_id'],c)
-    category = c['category_id'].split(",")
-    for cat in categoria:
-        newCategory(c['category_id'])
+def addCategory(catalog, elem):
+    lt.addLast(catalog['categories'], elem)
 
-def addVideo(catalog, video):
-    lt.addLast(catalog['videos'],video)
-    info = video['pais'].split(",")
-    for p in pais:
-        newVideo(video['title'])
+def addVideo(catalog, elem):
+    lt.addLast(catalog['videos'],elem)
 
 # Funciones para creacion de datos
 def newCategory(id):
@@ -81,7 +75,7 @@ def getBuenosVideos(catalog, categoria, pais, n):
     for cont in range(1, n+1):
         video = lt.getElement(videos, cont)
         print(video['title'])
-        if video['category_id'] == categoria and video['country']==pais:
+        if video['categories'] == categoria and video['country']==pais:
             lt.addLast(buenosVideos, video)
     return buenosVideos
 
