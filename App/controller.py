@@ -54,6 +54,5 @@ def loadVideos(catalog):
 # Funciones de ordenamiento
 
 # Funciones de consulta sobre el catálogo
-def getBuenosVideos(catalog, categoria, pais, n):
-    buenosVideos = model.getBuenosVideos(catalog, categoria, pais, n)
-    return buenosVideos
+def mejoresVideosPorViews(catalog, estructuraDeDatos, numeroDeElementos, algoritmo):
+    pass

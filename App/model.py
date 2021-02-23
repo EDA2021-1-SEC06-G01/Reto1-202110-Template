@@ -28,6 +28,8 @@
 import config as cf
 from DISClib.ADT import list as lt
 from DISClib.Algorithms.Sorting import shellsort as sa
+from DISClib.Algorithms.Sorting import insertionsort
+from DISClib.Algorithms.Sorting import selectionsort
 assert cf
 
 """
@@ -69,15 +71,8 @@ def newVideo(title, id):
     return video
 
 # Funciones de consulta
-def getBuenosVideos(catalog, categoria, pais, n):
-    videos = catalog['videos-small']
-    buenosVideos = lt.newList()
-    for cont in range(1, n+1):
-        video = lt.getElement(videos, cont)
-        print(video['title'])
-        if video['categories'] == categoria and video['country']==pais:
-            lt.addLast(buenosVideos, video)
-    return buenosVideos
+def mejoresVideosPorViews(catalog, estructuraDeDatos, numeroDeElementos, algoritmo):
+    pass
 
 
 # Funciones utilizadas para comparar elementos dentro de una lista
