@@ -90,7 +90,7 @@ def mejoresVideosPorViews(catalog, estructuraDeDatos, numeroDeElementos, algorit
     stop_time = time.process_time()
     elapsed_time_mseg = (stop_time -start_time)*1000
     return elapsed_time_mseg, sorted_list
-
+#FALTA ESPECIFICAR LA ESTRUCTURA DE DATOS DE LA LISTA SUB_LIST Y DE LA INICIAL
 
 def cmpVideosByViews(video1, video2):
     #Retorna True si los 'views' del video1 son menores que los del video2
