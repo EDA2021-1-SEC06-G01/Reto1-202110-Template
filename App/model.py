@@ -28,8 +28,8 @@
 import config as cf
 from DISClib.ADT import list as lt
 from DISClib.Algorithms.Sorting import shellsort as sa
-from DISClib.Algorithms.Sorting import insertionsort
-from DISClib.Algorithms.Sorting import selectionsort
+from DISClib.Algorithms.Sorting import insertionsort as ins
+from DISClib.Algorithms.Sorting import selectionsort as sele
 import time
 assert cf
 
@@ -77,16 +77,16 @@ def newVideo(title, id):
 # Funciones utilizadas para comparar elementos dentro de una lista
 
 # Funciones de ordenamiento
-def mejoresVideosPorViews(catalog, estructuraDeDatos, numeroDeElementos, algoritmo):
+def mejoresVideosPorViews(catalog, numeroDeElementos, algoritmo):
     sub_list = lt.subList(catalog['videos'], 0, numeroDeElementos)
     sub_list = sub_list.copy()
     start_time = time.process_time()
-    if estructuraDeDatos == "shellsort":
-        sorted_list = sa.shellsort(sub_list, cmpVideosByViews)
-    elif estructuraDeDatos == "insertionsort":
-        sorted_list = sa.insertionsort(sub_list, cmpVideosByViews)
-    else:
-        sorted_list = sa.selectionsort(sub_list, cmpVideosByViews)
+    if algoritmo == "shellsort":
+        sorted_list = sa.sort(sub_list, cmpVideosByViews)
+    elif algoritmo == "insertionsort":
+        sorted_list = ins.sort(sub_list, cmpVideosByViews)
+    elif algoritmo == "selectionsort":
+        sorted_list = sele.sort(sub_list, cmpVideosByViews)
     stop_time = time.process_time()
     elapsed_time_mseg = (stop_time -start_time)*1000
     return elapsed_time_mseg, sorted_list

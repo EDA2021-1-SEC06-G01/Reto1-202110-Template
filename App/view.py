@@ -66,17 +66,27 @@ while True:
     printMenu()
     inputs = input('Seleccione una opción para continuar\n')
     if int(inputs[0]) == 1:
-        estructuraDeDatos = input("¿Cuál estructura de datos desea utilizar? (ARRAY_LIST/SINGLE_LINKED_LIST)\n")
+        num = int(input("¿Cuál estructura de datos desea utilizar? (1 para ARRAY_LIST/ 2 para SINGLE_LINKED_LIST)\n"))
+        if num == 1:
+            estructuraDeDatos = 'ARRAY_LIST'
+        elif num == 2:
+            estructuraDeDatos = 'SINGLE_LINKED_LIST'
         print("Cargando información de los archivos ....")
         catalog = initCatalog(estructuraDeDatos)
         loadData(catalog)
         print('Categorías cargados: '+str(lt.size(catalog['categories'])))
         print('Videos cargados: '+ str(lt.size(catalog['videos'])))
     elif int(inputs[0]) == 2:
-        estructuraDeDatos = input("¿Cuál estructura de datos desea utilizar? (ARRAY_LIST/LINKED_LIST)")
         numeroDeElementos = int(input("¿Cuál es el número de datos que desea utilizar?"))
-        algoritmo = input("¿Cuál algoritmo desea utilizar? (shellsort/insertionsort/selectionsort) Escribir igual a las opciones.")
-        controller.mejoresVideosPorViews(catalog, estructuraDeDatos, numeroDeElementos, algoritmo)
+        num2 = int(input("¿Cuál algoritmo desea utilizar? (1 para shellsort/ 2 para insertionsort/3 para selectionsort)"))
+        if num2 == 1:
+            algoritmo = 'shellsort'
+        elif num2 == 2:
+            algoritmo = 'insertionsort'
+        elif num2 == 3:
+            algoritmo = 'selectionsort'
+        resultado = controller.mejoresVideosPorViews(catalog, numeroDeElementos, algoritmo)
+        print('Tiempo transcurrido y lista ordenada: '+ str(resultado))
 
     else:
         sys.exit(0)

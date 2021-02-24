@@ -54,5 +54,6 @@ def loadVideos(catalog):
 # Funciones de ordenamiento
 
 # Funciones de consulta sobre el catálogo
-def mejoresVideosPorViews(catalog, estructuraDeDatos, numeroDeElementos, algoritmo):
-    model.mejoresVideosPorViews(catalog, estructuraDeDatos, numeroDeElementos, algoritmo)
+def mejoresVideosPorViews(catalog, numeroDeElementos, algoritmo):
+    resultado = model.mejoresVideosPorViews(catalog, numeroDeElementos, algoritmo)
+    return resultado
