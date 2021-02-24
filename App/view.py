@@ -48,12 +48,17 @@ def initCatalog(estructuraDeDatos):
 def loadData(catalog):
     controller.loadData(catalog)
 
-def printBuenosVideos(videos):
+def printBuenosVideos(videos, sample=10):
     size = lt.size(videos)
-    if size:
-        print(' Estos son los mejores videos: ')
-        for video in lt.iterator(videos):
-            print('Título: '+ video['title']+ ' Trending Date: '+video['trending_date']+' Nombre del canal: '+ video['cannel_title']+ ' Fecha de publicación: '+video['publish_time']+' Reproducciones: '+video['views']+ ' Likes: '+video['likes']+ " Dislikes: "+video['dislikes'])
+    if size>sample:
+        print('Los primeros ', sample, " videos ordenados son: ")
+        i = 0
+        while i<=sample:
+            video = lt.getElement(videos, i)
+            print('Título: '+ video['title']+ ' Trending Date: '+video['trending_date']+
+                ' Nombre del canal: '+ video['channel_title']+ ' Fecha de publicación: '+video['publish_time']+
+                ' Reproducciones: '+video['views']+ ' Likes: '+video['likes']+ " Dislikes: "+video['dislikes'])
+            i+=1
     else:
         print('No se encontraron videos')
 
@@ -85,8 +90,9 @@ while True:
             algoritmo = 'insertionsort'
         elif num2 == 3:
             algoritmo = 'selectionsort'
-        resultado = controller.mejoresVideosPorViews(catalog, numeroDeElementos, algoritmo)
-        print('Tiempo transcurrido y lista ordenada: '+ str(resultado))
+        resultado = controller.mejoresVideosPorViews(catalog, int(numeroDeElementos), algoritmo)
+        print('Para la muestra de ', numeroDeElementos, ' elementos, el tiempo (mseg) es: ', str(resultado[0]))
+        printBuenosVideos(resultado[1])
 
     else:
         sys.exit(0)

@@ -45,7 +45,8 @@ def newCatalog(estructuraDeDatos):
                'country':None,
                'likes':None}
     
-    catalog['videos'] = lt.newList(estructuraDeDatos)
+    catalog['videos'] = lt.newList(estructuraDeDatos,
+                                    cmpfunction= cmpVideosByViews)
     catalog['categories'] = lt.newList(estructuraDeDatos)
     catalog['country'] = lt.newList(estructuraDeDatos)
     catalog['likes'] = lt.newList(estructuraDeDatos)
@@ -75,6 +76,12 @@ def newVideo(title, id):
 
 
 # Funciones utilizadas para comparar elementos dentro de una lista
+def cmpVideosByViews(video1, video2):
+    #Retorna True si los 'views' del video1 son menores que los del video2
+    if float(video1['views']) > float(video2['views']):
+        return False
+    else:
+        return True
 
 # Funciones de ordenamiento
 def mejoresVideosPorViews(catalog, numeroDeElementos, algoritmo):
@@ -90,11 +97,4 @@ def mejoresVideosPorViews(catalog, numeroDeElementos, algoritmo):
     stop_time = time.process_time()
     elapsed_time_mseg = (stop_time -start_time)*1000
     return elapsed_time_mseg, sorted_list
-#FALTA ESPECIFICAR LA ESTRUCTURA DE DATOS DE LA LISTA SUB_LIST Y DE LA INICIAL
 
-def cmpVideosByViews(video1, video2):
-    #Retorna True si los 'views' del video1 son menores que los del video2
-    if float(video1['views']) > float(video2['views']):
-        return False
-    else:
-        return True
