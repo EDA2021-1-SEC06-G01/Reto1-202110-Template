@@ -42,8 +42,8 @@ def printMenu():
     print("4- Encontrar video tendencia por categoría")
     print("5- Buscar los videos con más likes")
 
-def initCatalog():
-    return controller.initCatalog()
+def initCatalog(estructuraDeDatos):
+    return controller.initCatalog(estructuraDeDatos)
 
 def loadData(catalog):
     controller.loadData(catalog)
@@ -66,8 +66,9 @@ while True:
     printMenu()
     inputs = input('Seleccione una opción para continuar\n')
     if int(inputs[0]) == 1:
+        estructuraDeDatos = input("¿Cuál estructura de datos desea utilizar? (ARRAY_LIST/SINGLE_LINKED_LIST)\n")
         print("Cargando información de los archivos ....")
-        catalog = initCatalog()
+        catalog = initCatalog(estructuraDeDatos)
         loadData(catalog)
         print('Categorías cargados: '+str(lt.size(catalog['categories'])))
         print('Videos cargados: '+ str(lt.size(catalog['videos'])))

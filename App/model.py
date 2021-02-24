@@ -39,16 +39,16 @@ los mismos.
 """
 
 # Construccion de modelos
-def newCatalog(id):
+def newCatalog(estructuraDeDatos):
     catalog = {'videos': None,
                'categories': None,
                'country':None,
                'likes':None}
     
-    catalog['videos'] = lt.newList('SINGLE_LINKED')
-    catalog['categories'] = lt.newList('SINGLE_LLINKED')
-    catalog['country'] = lt.newList('SINGLE_LINKED')
-    catalog['likes'] = lt.newList('SINGLE_LINKED')
+    catalog['videos'] = lt.newList(estructuraDeDatos)
+    catalog['categories'] = lt.newList(estructuraDeDatos)
+    catalog['country'] = lt.newList(estructuraDeDatos)
+    catalog['likes'] = lt.newList(estructuraDeDatos)
 
     return catalog
 
