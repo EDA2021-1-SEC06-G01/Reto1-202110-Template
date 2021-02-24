@@ -85,7 +85,7 @@ def cmpVideosByViews(video1, video2):
 
 # Funciones de ordenamiento
 def mejoresVideosPorViews(catalog, numeroDeElementos, algoritmo):
-    sub_list = lt.subList(catalog['videos'], 0, numeroDeElementos)
+    sub_list = lt.subList(catalog['videos'], 1, numeroDeElementos)
     sub_list = sub_list.copy()
     start_time = time.process_time()
     if algoritmo == "shellsort":
