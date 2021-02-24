@@ -79,9 +79,9 @@ def newVideo(title, id):
 def cmpVideosByViews(video1, video2):
     #Retorna True si los 'views' del video1 son menores que los del video2
     if float(video1['views']) > float(video2['views']):
-        return False
-    else:
         return True
+    else:
+        return False
 
 # Funciones de ordenamiento
 def mejoresVideosPorViews(catalog, numeroDeElementos, algoritmo):
