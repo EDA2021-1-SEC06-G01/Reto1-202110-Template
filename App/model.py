@@ -30,6 +30,8 @@ from DISClib.ADT import list as lt
 from DISClib.Algorithms.Sorting import shellsort as sa
 from DISClib.Algorithms.Sorting import insertionsort as ins
 from DISClib.Algorithms.Sorting import selectionsort as sele
+from DISClib.Algorithms.Sorting import mergesort as merge
+from DISClib.Algorithms.Sorting import quicksort as quick
 import time
 assert cf
 
@@ -94,6 +96,10 @@ def mejoresVideosPorViews(catalog, numeroDeElementos, algoritmo):
         sorted_list = ins.sort(sub_list, cmpVideosByViews)
     elif algoritmo == "selectionsort":
         sorted_list = sele.sort(sub_list, cmpVideosByViews)
+    elif algoritmo == "mergesort":
+        sorted_list = merge.sort(sub_list, cmpVideosByViews)
+    elif algoritmo == "quicksort":
+        sorted_list = quick.sort(sub_list, cmpVideosByViews)
     stop_time = time.process_time()
     elapsed_time_mseg = (stop_time -start_time)*1000
     return elapsed_time_mseg, sorted_list

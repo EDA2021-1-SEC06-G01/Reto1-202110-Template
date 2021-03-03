@@ -83,13 +83,17 @@ while True:
         print('Videos cargados: '+ str(lt.size(catalog['videos'])))
     elif int(inputs[0]) == 2:
         numeroDeElementos = int(input("¿Cuál es el número de datos que desea utilizar?"))
-        num2 = int(input("¿Cuál algoritmo desea utilizar? (1 para shellsort/ 2 para insertionsort/3 para selectionsort)"))
+        num2 = int(input("¿Cuál algoritmo desea utilizar? (1 para shellsort/ 2 para insertionsort/3 para selectionsort/4 para mergesort/5 para quicksort)"))
         if num2 == 1:
             algoritmo = 'shellsort'
         elif num2 == 2:
             algoritmo = 'insertionsort'
         elif num2 == 3:
             algoritmo = 'selectionsort'
+        elif num2 == 4:
+            algoritmo = 'mergesort'
+        elif num2 == 5:
+            algoritmo = 'quicksort'
         resultado = controller.mejoresVideosPorViews(catalog, int(numeroDeElementos), algoritmo)
         print('Para la muestra de ', numeroDeElementos, ' elementos, el tiempo (mseg) es: ', str(resultado[0]))
         printBuenosVideos(resultado[1])
