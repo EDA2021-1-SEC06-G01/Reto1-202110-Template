@@ -61,7 +61,20 @@ def printBuenosVideos(videos, sample=10):
             i+=1
     else:
         print('No se encontraron videos')
-def 
+def printvideostendenciaporciudad(videos, sample=10):
+    size = lt.size(videos)
+    if size>sample:
+        print('Los primeros ', sample, " videos ordenados son: ")
+        i = 0
+        while i<=sample:
+            video = lt.getElement(videos, i)
+            print('Título: '+ video['title']+ ' Trending Date: '+video['trending_date']+
+                ' Nombre del canal: '+ video['channel_title']+ ' Fecha de publicación: '+video['publish_time']+
+                ' Reproducciones: '+video['views']+ ' Likes: '+video['likes']+ " Dislikes: "+video['dislikes'])
+            i+=1
+    else:
+        print('No se encontraron videos')
+ 
 
 catalog = None
 
@@ -98,6 +111,12 @@ while True:
         resultado = controller.mejoresVideosPorViews(catalog, int(numeroDeElementos), algoritmo)
         print('Para la muestra de ', numeroDeElementos, ' elementos, el tiempo (mseg) es: ', str(resultado[0]))
         printBuenosVideos(resultado[1])
+    elif int(inputs[0]) == 3:
+        categoria = input("categoria de los videos: ")
+        ciudad = input("ciudad del los videos en tendencia:")
+        numero = int(input("numero de datos"))
+        resultado = controller.videos_tendencia_por_ciudad(catalog,categoria,ciudad,numero)
+        printvideostendenciaporciudad(resultado[1])
 
     else:
         sys.exit(0)

@@ -57,3 +57,7 @@ def loadVideos(catalog):
 def mejoresVideosPorViews(catalog, numeroDeElementos, algoritmo):
     resultado = model.mejoresVideosPorViews(catalog, numeroDeElementos, algoritmo)
     return resultado
+
+def videos_tendencia_por_ciudad(catalog,categoria,ciudad,numero):
+    resultado = model.videostendenciaporciudad(catalog,categoria,ciudad,numero)
+    return resultado
