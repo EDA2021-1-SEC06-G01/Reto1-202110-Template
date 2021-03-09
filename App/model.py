@@ -106,7 +106,7 @@ def mejoresVideosPorViews(catalog, numeroDeElementos, algoritmo):
 def videostendenciaporciudad(catalog,categoria,ciudad,numero):
     if catalog["categories"]==categoria:
         if catalog["country"]== ciudad:
-            sublist = it.sublist(catalog["videos"],1,numero)
+            sublist = lt.sublist(catalog["videos"],1,numero)
             sublist= sublist.copy
             sorted_list = sa.sort(sub_list,cmpVideosByViews)
             return sorted_list
