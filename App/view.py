@@ -115,8 +115,9 @@ while True:
         categoria = input("categoria de los videos: ")
         ciudad = input("ciudad del los videos en tendencia:")
         numero = int(input("numero de datos"))
-        resultado = controller.videos_tendencia_por_ciudad(catalog,categoria,ciudad,numero)
-        printvideostendenciaporciudad(resultado)
+        resultado = controller.videos_tendencia_por_ciudad(catalog,categoria,ciudad,int(numero))
+        print(resultado)
+        #printvideostendenciaporciudad(resultado)
 
     else:
         sys.exit(0)

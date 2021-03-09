@@ -104,9 +104,12 @@ def mejoresVideosPorViews(catalog, numeroDeElementos, algoritmo):
     elapsed_time_mseg = (stop_time -start_time)*1000
     return elapsed_time_mseg, sorted_list
 def videostendenciaporciudad(catalog,categoria,ciudad,numero):
-    if catalog["categories"]==categoria:
-        if catalog["country"]== ciudad:
-            sublist = lt.sublist(catalog["videos"],1,numero)
-            sublist= sublist.copy
-            sorted_list = sa.sort(sub_list,cmpVideosByViews)
-            return sorted_list
+ 
+    sub_list = lt.subList(catalog['videos'], 1, numero)
+    sub_list= sub_list.copy()
+    sorted_list = sa.sort(sub_list,cmpVideosByViews)
+  
+    return resultado
+
+
+
