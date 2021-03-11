@@ -52,8 +52,9 @@ def newCatalog(estructuraDeDatos):
     catalog['categories'] = lt.newList(estructuraDeDatos)
     catalog['country'] = lt.newList(estructuraDeDatos)
     catalog['likes'] = lt.newList(estructuraDeDatos)
-
     return catalog
+
+
 
 # Funciones para agregar informacion al catalogo
 def addCategory(catalog, elem):
@@ -74,6 +75,7 @@ def newVideo(title, id):
     video['video_id'] = id
     return video
 
+
 # Funciones de consulta
 
 
@@ -81,6 +83,19 @@ def newVideo(title, id):
 def cmpVideosByViews(video1, video2):
     #Retorna True si los 'views' del video1 son menores que los del video2
     if float(video1['views']) > float(video2['views']):
+        return True
+    else:
+        return False
+
+def cmpVideosByTrends(video1, video2):
+    contadorV1 = 0
+    contadorV2 = 0
+    for video in catalog['videos']:
+        if video['video_id']==video1['video_id']:
+            contadorV1 += 1
+        elif video['video_id']==video2['video_id']:
+            contadorV2 += 1
+    if contadorV1 > contadorV2:
         return True
     else:
         return False
@@ -103,6 +118,8 @@ def mejoresVideosPorViews(catalog, numeroDeElementos, algoritmo):
     stop_time = time.process_time()
     elapsed_time_mseg = (stop_time -start_time)*1000
     return elapsed_time_mseg, sorted_list
+
+
 def videostendenciaporciudad(catalog,categoria,ciudad,numero):
     if catalog["categories"]==categoria:
         if catalog["country"]== ciudad:
@@ -110,3 +127,17 @@ def videostendenciaporciudad(catalog,categoria,ciudad,numero):
             sublist= sublist.copy
             sorted_list = sa.sort(sub_list,cmpVideosByViews)
             return sorted_list
+
+def videosTendenciaPorCategoria(catalog, categoria):
+    sublista = lt.newList(datastructure="ARRAY_LIST", cmpfunction=None)
+    poscategoria = lt.isPresent(catalog['categories'], categoria)
+    categoria = lt.getElement(catalog['categories'], poscategoria)
+    for videos in catalog['videos']:
+        if video['categories'] == categoria:
+            lt.addFirst(sublista, video)
+    start_time = time.process_time()
+    sorted_list = merge.sort(sublista, cmpVideosByTrends)
+    stop_time = time.process_time()
+    elapsed_time_mseg = (stop_time-start_time)*1000
+    return elapsed_time_mseg, sorted_list
+

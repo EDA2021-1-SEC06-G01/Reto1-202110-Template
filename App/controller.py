@@ -41,7 +41,7 @@ def loadData(catalog):
 
 def loadCategory(catalog):
     category = cf.data_dir + '/category-id.csv'
-    input_file = csv.DictReader(open(category, encoding='utf-8'))
+    input_file = csv.DictReader(open(category, encoding='utf-8'), delimiter = "\t")
     for c in input_file:
         model.addCategory(catalog, c)
 
@@ -60,4 +60,9 @@ def mejoresVideosPorViews(catalog, numeroDeElementos, algoritmo):
 
 def videos_tendencia_por_ciudad(catalog,categoria,ciudad,numero):
     resultado = model.videostendenciaporciudad(catalog,categoria,ciudad,numero)
+    return resultado
+
+
+def videosTendenciaPorCategoria(catalog, categoria):
+    resultado = model.videosTendenciaPorCategoria(catalog, categoria)
     return resultado
