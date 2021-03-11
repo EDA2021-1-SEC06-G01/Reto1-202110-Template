@@ -106,10 +106,13 @@ def mejoresVideosPorViews(catalog, numeroDeElementos, algoritmo):
 
 
 def videostendenciaporciudad(catalog, categorias, pais,numero):
+    x= "shellsort"
+    vid= mejoresVideosPorViews(catalog,numero,x)
  
-    pos = lt.isPresent(catalog['country'], pais)
+    
+    pos = lt.isPresent(vid['country'], pais)
     if pos > 0:
-        resultado = lt.getElement(catalog['country'], pos)
+        resultado = lt.getElement(vid['country'], pos)
         return resultado
 
 
