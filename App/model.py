@@ -85,6 +85,10 @@ def cmpVideosByViews(video1, video2):
     else:
         return False
 
+
+
+
+
 # Funciones de ordenamiento
 def mejoresVideosPorViews(catalog, numeroDeElementos, algoritmo):
     sub_list = lt.subList(catalog['videos'], 1, numeroDeElementos)
@@ -105,15 +109,23 @@ def mejoresVideosPorViews(catalog, numeroDeElementos, algoritmo):
     return elapsed_time_mseg, sorted_list
 
 
-def videostendenciaporciudad(catalog, categorias, pais,numero):
-    x= "shellsort"
-    vid= mejoresVideosPorViews(catalog,numero,x)
- 
+def videostendenciaporpais(catalog, categorias, pais,numero):
+
+    sub_list = lt.subList(catalog['videos'], 1, (numero+1))
+    sub_list = sub_list.copy()
+    sorted_list = sa.sort(sub_list,cmpVideosByViews)
+    for i in sorted_list['country']:
+        paises = lt.getElement(sorted_list['country'], i)
+        lt.addFirst(sorted_list,paises)
+    return sorted_list 
+
+
+
+
     
-    pos = lt.isPresent(vid['country'], pais)
-    if pos > 0:
-        resultado = lt.getElement(vid['country'], pos)
-        return resultado
+
+
+
 
 
 
