@@ -75,6 +75,8 @@ def printvideostendenciaporciudad(videos, sample=10):
     else:
         print('No se encontraron videos')
  
+def printVideoTendenciaPorCategoria(video):
+    
 
 catalog = None
 
@@ -117,6 +119,10 @@ while True:
         numero = int(input("numero de datos"))
         resultado = controller.videos_tendencia_por_ciudad(catalog,categoria,ciudad,numero)
         printvideostendenciaporciudad(resultado)
+    elif int(input[0] == 4):
+        categoria = input("Elija categoría del video ")
+        numeroDeElementos = int(input("¿Cuál es el número de datos que desea utilizar?"))
+        resultado = 
 
     else:
         sys.exit(0)
