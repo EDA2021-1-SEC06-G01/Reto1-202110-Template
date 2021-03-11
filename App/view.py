@@ -53,7 +53,7 @@ def printBuenosVideos(videos, sample=10):
     if size>sample:
         print('Los primeros ', sample, " videos ordenados son: ")
         i = 0
-        while i<=sample:
+        while i<sample:
             video = lt.getElement(videos, i)
             print('Título: '+ video['title']+ ' Trending Date: '+video['trending_date']+
                 ' Nombre del canal: '+ video['channel_title']+ ' Fecha de publicación: '+video['publish_time']+
@@ -75,6 +75,9 @@ def printvideostendenciaporciudad(videos, sample=10):
     else:
         print('No se encontraron videos')
  
+def printVideoTendenciaPorCategoria(resultado):
+    print('Título: ' + resultado['title'] + ' Nombre del canal: ' + resultado['channel_title']+ ' Categoría: '+ resultado['category_id'])
+    
 
 catalog = None
 
@@ -115,8 +118,16 @@ while True:
         categoria = input("categoria de los videos: ")
         pais = input("ciudad del los videos en tendencia:")
         numero = int(input("numero de datos"))
+
         resultado = controller.videos_tendencia_por_pais(catalog,categoria,pais,int(numero))
         printvideostendenciaporciudad(resultado)
+=======
+        
+    elif int(inputs[0]) == 4:
+        categoria = input("Elija categoría del video ")
+        resultado = controller.videosTendenciaPorCategoria(catalog, categoria)
+        printVideoTendenciaPorCategoria(resultado)
+
 
     else:
         sys.exit(0)
