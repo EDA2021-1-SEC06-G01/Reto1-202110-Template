@@ -87,24 +87,9 @@ def cmpVideosByViews(video1, video2):
     else:
         return False
 
-<<<<<<< HEAD
 
 
 
-=======
-def cmpVideosByTrends(video1, video2):
-    contadorV1 = 0
-    contadorV2 = 0
-    for video in catalog['videos']:
-        if video['video_id']==video1['video_id']:
-            contadorV1 += 1
-        elif video['video_id']==video2['video_id']:
-            contadorV2 += 1
-    if contadorV1 > contadorV2:
-        return True
-    else:
-        return False
->>>>>>> da30781b732a466bea659cfeeb8b52eee3dc41a3
 
 # Funciones de ordenamiento
 def mejoresVideosPorViews(catalog, numeroDeElementos, algoritmo):
@@ -126,7 +111,6 @@ def mejoresVideosPorViews(catalog, numeroDeElementos, algoritmo):
     return elapsed_time_mseg, sorted_list
 
 
-<<<<<<< HEAD
 def videostendenciaporpais(catalog, categorias, pais,numero):
 
     sub_list = lt.subList(catalog['videos'], 1, (numero+1))
@@ -147,20 +131,4 @@ def videostendenciaporpais(catalog, categorias, pais,numero):
 
 
 
-=======
-
-
-def videosTendenciaPorCategoria(catalog, categoria):
-    sublista = lt.newList(datastructure="ARRAY_LIST", cmpfunction=None)
-    poscategoria = lt.isPresent(catalog['categories'], categoria)
-    categoria = lt.getElement(catalog['categories'], poscategoria)
-    for videos in catalog['videos']:
-        if video['categories'] == categoria:
-            lt.addFirst(sublista, video)
-    start_time = time.process_time()
-    sorted_list = merge.sort(sublista, cmpVideosByTrends)
-    stop_time = time.process_time()
-    elapsed_time_mseg = (stop_time-start_time)*1000
-    return elapsed_time_mseg, sorted_list
->>>>>>> da30781b732a466bea659cfeeb8b52eee3dc41a3
 
