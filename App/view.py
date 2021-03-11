@@ -116,15 +116,18 @@ while True:
         printBuenosVideos(resultado[1])
     elif int(inputs[0]) == 3:
         categoria = input("categoria de los videos: ")
-        ciudad = input("ciudad del los videos en tendencia:")
+        pais = input("ciudad del los videos en tendencia:")
         numero = int(input("numero de datos"))
-        resultado = controller.videos_tendencia_por_ciudad(catalog,categoria,ciudad,numero)
-        print('El tiempo de ejecución (mseg) fue de: ', str(resultado[0]))
-        printvideostendenciaporciudad(resultado[1])
+
+        resultado = controller.videos_tendencia_por_pais(catalog,categoria,pais,int(numero))
+        printvideostendenciaporciudad(resultado)
+=======
+        
     elif int(inputs[0]) == 4:
         categoria = input("Elija categoría del video ")
         resultado = controller.videosTendenciaPorCategoria(catalog, categoria)
         printVideoTendenciaPorCategoria(resultado)
+
 
     else:
         sys.exit(0)
